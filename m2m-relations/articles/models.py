@@ -30,6 +30,9 @@ class Scope(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='scopes')
     is_main = models.BooleanField()
 
+    def __str__(self):
+        return self.article
+
 
 
 
