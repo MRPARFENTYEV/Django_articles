@@ -4,27 +4,23 @@ from .models import Article,Tag,Scope
 #
 #
 def articles_list(request):
-    tags = {}
+    # tags = {}
     template = 'articles/news.html'
     article_object = Article.objects.all()
-    # tag = Tag.objects.all()
-    scope = Scope.objects.filter()
+
+    # tags= Article.scopes.all()
     # print(Article.scopes)
-    for a in article_object:
-
-        id = a.id
-        tags[id]=[]
-        scope = Scope.objects.filter(article_id = id)
-        for iter in scope:
-            tags[id].append(iter.tag)
-            print(iter.tag)
-        # print(scope.tag)
-
-
-    print(tags)
-    context = {'object_list': article_object,
-               'tag':tags}
-#     context = {'object_list': article_object}
+    # for a in article_object:
+    #     id = a.id
+    #     tags[id]=[]
+    #     scope = Scope.objects.filter(article_id = id)
+    #     for iter in scope:
+    #         tags[id].append(iter.tag)
+    #         print(iter.tag)
+    #     # print(scope.tag)
+    # context = {'object_list': article_object,
+    #            'tag':tags}
+    context = {'object_list': article_object}
 #     context ={}
 #
 #
