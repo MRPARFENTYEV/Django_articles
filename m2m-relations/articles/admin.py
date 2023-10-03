@@ -4,25 +4,42 @@ from django.forms import BaseInlineFormSet
 
 from .models import Article, Tag, Scope
 
-
+# class RelationshipInlineFormset(BaseInlineFormSet):
 class RelationshipInlineFormset(BaseInlineFormSet):
     def clean(self):
-        for form in self.forms:
+        its_main = 0
 
-            its_main =0
+        for form in self.forms:
+           # super().clean()
+
+           ISMain = form.cleaned_data.get('is_main')
+           if ISMain == True:
+               its_main += 1
+               if its_main > 1:
+                   raise ValidationError('Основным может быть только один раздел')
+
+           print(its_main)
+
+           print('_____________')
+           print(ISMain)
+
+        super().clean()
+
+
+            # its_main =0
             # В form.cleaned_data будет словарь с данными
             # каждой отдельной формы, которые вы можете проверить
-            ISMain = form.cleaned_data.get('is_main')
-            print(ISMain)
-            if 'is_main' in ISMain:
-                its_main += 1
+        #     ISMain = form.cleaned_data.get('is_main')
+        #
+        # if 'is_main' in ISMain:
+        #         its_main += 1
+        #
+        #         print(its_main)
+        #         if its_main > 1:
+        #     #
+        #             raise ValidationError('Основным может быть только один раздел')
+        #     else: pass
 
-                print(its_main)
-                if its_main > 1:
-            #
-                    raise ValidationError('Основным может быть только один раздел')
-                else:
-                    return super().clean()
             # вызовом исключения ValidationError можно указать админке о наличие ошибки
             # таким образом объект не будет сохранен,
             # а пользователю выведется соответствующее сообщение об ошибке
@@ -32,7 +49,7 @@ class RelationshipInlineFormset(BaseInlineFormSet):
 
 @admin.register(Tag)
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'slug']
+    list_display = ['id', 'name', 'slug']
 
 
 # @admin.register(Scope)
@@ -43,7 +60,8 @@ class ArticleAdmin(admin.ModelAdmin):
 class RelationshipInline(admin.TabularInline):
     model = Scope
     extra = 1
-    # formset = RelationshipInlineFormset
+    # formset = [RelationshipInlineFormset]
+    formset = RelationshipInlineFormset
 
 
 @admin.register(Article)
