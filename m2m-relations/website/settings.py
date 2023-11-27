@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '1_m2m_1',
         'HOST': '127.0.0.1',
         'PORT': '5432',
@@ -85,7 +85,7 @@ DATABASES = {
         'PASSWORD': 'Sqlzaebal'
     }
 }
-
+# 'ENGINE': 'django.db.backends.postgresql',
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 

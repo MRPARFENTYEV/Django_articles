@@ -1,3 +1,21 @@
-django
-psycopg2-binary
-pillow
+# django
+# psycopg2-binary
+# pillow
+asgiref==3.7.2
+beautifulsoup4==4.12.2
+certifi==2023.7.22
+charset-normalizer==3.2.0
+Django==4.2.4
+idna==3.4
+phonenumbers==8.13.20
+Pillow==10.0.0
+psycopg2-binary==2.9.7
+pycryptodome==3.18.0
+requests==2.31.0
+six==1.16.0
+soupsieve==2.5
+sqlparse==0.4.4
+sw-django-utils==0.0.54
+sw-python-utils==0.0.18
+tzdata==2023.3
+urllib3==2.0.4
